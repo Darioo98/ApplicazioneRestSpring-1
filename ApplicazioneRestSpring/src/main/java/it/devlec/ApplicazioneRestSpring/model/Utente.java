@@ -68,4 +68,13 @@ public class Utente {
     public void setDataNascita(Date dataNascita) {
         this.dataNascita = dataNascita;
     }
+
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                '}';
+    }
 }
