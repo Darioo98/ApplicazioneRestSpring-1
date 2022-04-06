@@ -8,7 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Configuration
@@ -55,6 +57,11 @@ public class PrimoInseirmento {
             for (Utente u: utentiDB) {
                  logger.warn(u.toString());
             }
+            SimpleDateFormat dataNascita = new SimpleDateFormat("yyyy-MM-dd");
+            Date dataLuca = dataNascita.parse("2005-05-22");
+            Utente utenteConTuttiGliAttributi = new Utente("Luca","Foggia",dataLuca,
+            new Date(),2.3f);
+            repository.save(utenteConTuttiGliAttributi);
 
         };
     }

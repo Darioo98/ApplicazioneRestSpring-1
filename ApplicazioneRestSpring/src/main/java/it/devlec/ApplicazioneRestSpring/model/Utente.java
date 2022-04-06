@@ -14,22 +14,33 @@ public class Utente {
     private String nome;
     private String cognome;
 
-    private Date dataNascita;
+    private Date datadinascita;
+    private Date datadiregistrazione;
+
+    private float ranking;
 
     public Utente() {
+    }
+
+    public Utente(String nome, String cognome, Date dataNascita, Date dataDiRegistazione, float ranking) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.datadinascita = dataNascita;
+        this.datadiregistrazione = dataDiRegistazione;
+        this.ranking = ranking;
     }
 
     public Utente(String nome, String cognome, Date dataNascita) {
         this.nome = nome;
         this.cognome = cognome;
-        this.dataNascita = dataNascita;
+        this.datadinascita = dataNascita;
     }
 
     public Utente(Long id, String nome, String cognome, Date dataNascita) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
-        this.dataNascita = dataNascita;
+        this.datadinascita = dataNascita;
     }
 
     public Utente(String nome, String cognome) {
@@ -62,11 +73,27 @@ public class Utente {
     }
 
     public Date getDataNascita() {
-        return dataNascita;
+        return datadinascita;
     }
 
     public void setDataNascita(Date dataNascita) {
-        this.dataNascita = dataNascita;
+        this.datadinascita = dataNascita;
+    }
+
+    public Date getDataDiRegistazione() {
+        return datadiregistrazione;
+    }
+
+    public void setDataDiRegistazione(Date dataDiRegistazione) {
+        this.datadiregistrazione = dataDiRegistazione;
+    }
+
+    public float getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(float ranking) {
+        this.ranking = ranking;
     }
 
     @Override

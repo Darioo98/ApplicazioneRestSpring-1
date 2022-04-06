@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -57,6 +58,40 @@ public class UtenteRestController {
                                                Date dataa){
         return repository.findByDatadinascitaBetween(datada,dataa);
     }
+
+    @GetMapping("/utente/ricercadataregistrazione")
+    public List<Utente> ricercaPerDataDiRegistrazione(@RequestParam(name="datada") @DateTimeFormat(pattern= "dd-MM-yyyy")
+                                               Date datada,
+                                       @RequestParam(name="dataa") @DateTimeFormat(pattern= "dd-MM-yyyy")
+                                               Date dataa){
+        return repository.findByDatadiregistrazioneBetween(datada,dataa);
+    }
+
+    @GetMapping("/utente/ranking")
+    public List<Utente> ricercaPeRanking(@RequestParam(name="min") float min,
+                                         @RequestParam(name="max") float max){
+        return repository.findByRankingBetween(min,max);
+    }
+
+    @GetMapping("/utente/rankingmin")
+    public List<Utente> ricercaLessRanking(@RequestParam(name="max") float max){
+        return repository.findByRankingLessThan(max);
+    }
+
+    //Upload documento
+
+    @PostMapping("/caricafile")
+    public String caricaFile(@RequestParam("file") MultipartFile file){
+
+        String infoFile = file.getOriginalFilename()+" "+file.getContentType();
+        String conFormat =String.format("%s-%s",file.getOriginalFilename(),file.getContentType());
+        logger.info(infoFile);
+        logger.warn(conFormat);
+
+        return conFormat;
+    }
+
+
 
 
 
