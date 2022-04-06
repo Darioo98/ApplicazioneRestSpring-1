@@ -73,7 +73,7 @@ public class UtenteRestController {
         return repository.findByRankingBetween(min,max);
     }
 
-    @GetMapping("/utente/rankingmin")
+    @GetMapping("/utente/rankingmax")
     public List<Utente> ricercaLessRanking(@RequestParam(name="max") float max){
         return repository.findByRankingLessThan(max);
     }
